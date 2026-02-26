@@ -60,35 +60,39 @@ Route::middleware('auth')->group(function () {
 
     // Admin Routes
     Route::middleware(['role:admin'])->prefix('admin')->name('admin.')->group(function () {
-            Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class , 'index'])->name('dashboard');
+            Route::get('/', function () {
+                    return redirect()->route('admin.dashboard');
+                }
+                );
+                Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class , 'index'])->name('dashboard');
 
-            // Moderation
-            Route::get('/pets', [\App\Http\Controllers\Admin\PetModerationController::class , 'index'])->name('pets.index');
-            Route::post('/pets/{pet}/approve', [\App\Http\Controllers\Admin\PetModerationController::class , 'approve'])->name('pets.approve');
-            Route::post('/pets/{pet}/reject', [\App\Http\Controllers\Admin\PetModerationController::class , 'reject'])->name('pets.reject');
+                // Moderation
+                Route::get('/pets', [\App\Http\Controllers\Admin\PetModerationController::class , 'index'])->name('pets.index');
+                Route::post('/pets/{pet}/approve', [\App\Http\Controllers\Admin\PetModerationController::class , 'approve'])->name('pets.approve');
+                Route::post('/pets/{pet}/reject', [\App\Http\Controllers\Admin\PetModerationController::class , 'reject'])->name('pets.reject');
 
-            Route::get('/businesses', [\App\Http\Controllers\Admin\BusinessModerationController::class , 'index'])->name('businesses.index');
-            Route::post('/businesses/{business}/approve', [\App\Http\Controllers\Admin\BusinessModerationController::class , 'approve'])->name('businesses.approve');
-            Route::post('/businesses/{business}/reject', [\App\Http\Controllers\Admin\BusinessModerationController::class , 'reject'])->name('businesses.reject');
+                Route::get('/businesses', [\App\Http\Controllers\Admin\BusinessModerationController::class , 'index'])->name('businesses.index');
+                Route::post('/businesses/{business}/approve', [\App\Http\Controllers\Admin\BusinessModerationController::class , 'approve'])->name('businesses.approve');
+                Route::post('/businesses/{business}/reject', [\App\Http\Controllers\Admin\BusinessModerationController::class , 'reject'])->name('businesses.reject');
 
-            // User Management
-            Route::get('/users', [\App\Http\Controllers\Admin\UserController::class , 'index'])->name('users.index');
-            Route::post('/users/{user}/block', [\App\Http\Controllers\Admin\UserController::class , 'block'])->name('users.block');
-            Route::post('/users/{user}/unblock', [\App\Http\Controllers\Admin\UserController::class , 'unblock'])->name('users.unblock');
+                // User Management
+                Route::get('/users', [\App\Http\Controllers\Admin\UserController::class , 'index'])->name('users.index');
+                Route::post('/users/{user}/block', [\App\Http\Controllers\Admin\UserController::class , 'block'])->name('users.block');
+                Route::post('/users/{user}/unblock', [\App\Http\Controllers\Admin\UserController::class , 'unblock'])->name('users.unblock');
 
-            // Reports
-            Route::get('/reports', [\App\Http\Controllers\Admin\ReportController::class , 'index'])->name('reports.index');
-            Route::post('/reports/{report}/resolve', [\App\Http\Controllers\Admin\ReportController::class , 'resolve'])->name('reports.resolve');
-            Route::delete('/reports/{report}', [\App\Http\Controllers\Admin\ReportController::class , 'destroy'])->name('reports.destroy');
+                // Reports
+                Route::get('/reports', [\App\Http\Controllers\Admin\ReportController::class , 'index'])->name('reports.index');
+                Route::post('/reports/{report}/resolve', [\App\Http\Controllers\Admin\ReportController::class , 'resolve'])->name('reports.resolve');
+                Route::delete('/reports/{report}', [\App\Http\Controllers\Admin\ReportController::class , 'destroy'])->name('reports.destroy');
 
-            // Audits
-            Route::get('/audits', [\App\Http\Controllers\Admin\AuditController::class , 'index'])->name('audits.index');
+                // Audits
+                Route::get('/audits', [\App\Http\Controllers\Admin\AuditController::class , 'index'])->name('audits.index');
 
-            // Subscriptions
-            Route::get('/subscriptions', [\App\Http\Controllers\Admin\SubscriptionController::class , 'index'])->name('subscriptions.index');
-        }
-        );
-    });
+                // Subscriptions
+                Route::get('/subscriptions', [\App\Http\Controllers\Admin\SubscriptionController::class , 'index'])->name('subscriptions.index');
+            }
+            );
+        });
 
 Route::get('/pets', [\App\Http\Controllers\PetController::class , 'index'])->name('pets.index');
 Route::get('/pets/{pet}', [\App\Http\Controllers\PetController::class , 'show'])->name('pets.show');
