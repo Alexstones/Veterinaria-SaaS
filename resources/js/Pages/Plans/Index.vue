@@ -108,9 +108,9 @@ const props = defineProps({
                             </p>
                         </div>
                         <div class="shrink-0">
-                            <button class="px-12 py-6 bg-white text-gray-900 rounded-[2rem] font-black text-sm uppercase tracking-widest hover:bg-indigo-50 transition-all shadow-xl hover:shadow-indigo-500/20 transform hover:-translate-y-1">
+                            <a href="https://wa.me/526252050935?text=Hola,%20me%20interesan%20los%20planes%20corporativos%20para%20mi%20negocio" target="_blank" class="inline-block px-12 py-6 bg-white text-gray-900 rounded-[2rem] font-black text-sm uppercase tracking-widest hover:bg-indigo-50 transition-all shadow-xl hover:shadow-indigo-500/20 transform hover:-translate-y-1">
                                 Contactar un Asesor
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
